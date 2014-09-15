@@ -1,6 +1,7 @@
 package DistanceFieldGlyphs;
 
 import java.io.FileNotFoundException;
+import java.util.Map;
 
 import android.util.Log;
 
@@ -55,14 +56,14 @@ public class DistanceFieldString  implements IRenderHook {
 		 * @param res
 		 * @throws FileNotFoundException
 		 */
-	public DistanceFieldString(//GLSLShader shader,
+	public DistanceFieldString(
 			         String text,
 			         World world,
 			         FrameBuffer 
 			         framebufferReference,
 			         int x, int y,float scale,
 			         SimpleVector colour,
-			         DistanceFieldCharacter[] characters,
+			         Map<String,DistanceFieldCharacter> characterData,
 			         GLSLShader shader)
 	{
 		FirstxPos=x;
@@ -79,7 +80,7 @@ public class DistanceFieldString  implements IRenderHook {
 		 {
 			 char ch= text.charAt(i);
 			 int  charnum=(int)ch;
-			 charactersList[i]= characters[charnum-32];
+			 charactersList[i]=  characterData.get(Integer.toString(charnum));
 		 }
 	    
 	    setUpOverlayStart();

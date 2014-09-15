@@ -13,7 +13,6 @@ import com.threed.jpct.SimpleVector;
 
 public class DistanceFieldCharacter {
 	
-	
 	String id;
 
 	float   bottomLeftx;
@@ -30,18 +29,11 @@ public class DistanceFieldCharacter {
 	
 	float bminusAx;
 	float bminusAy;
-	
-	
-	
-	//float widthPercetageShrink;
-	//float heightPercetageShrink;
 
 	float offsetX;
 	float offsetY;
 	
 	float advanceX;
-	
-	//GLSLShader characterShader;
 	
 	
 	DistanceFieldCharacter(int Size,float x,float y,float w,float h,float offsetx,float offsety,float advance,GLSLShader Ov)
