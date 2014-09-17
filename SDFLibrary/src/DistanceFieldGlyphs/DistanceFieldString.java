@@ -27,18 +27,21 @@ public class DistanceFieldString  implements IRenderHook {
 	private static final String offsetx = "offsetx";
 	private static final String offsety = "offsety";
 	
-	private static final String screenx = "screenx";
-	private static final String screeny = "screeny";
-	private static final String bminusAX = "bminusAX";
-	private static final String bminusAY = "bminusAY";
+	int screenx;
+	int screeny;
 	
 	
 //	float screenwidth=  2/480;
 	//float screenheight= 2/800;
 	
-	int FirstxPos;
-	int FirstyPos;
-	float scale;
+	//int FirstxPos;
+	//int FirstyPos;
+	
+	float screenposx;
+	float screenposy;
+	float texturesizex;
+	float texturesizey;
+	//float scale;
 	
 	float firstposDecX;
 	float firstposDecY;
@@ -50,25 +53,26 @@ public class DistanceFieldString  implements IRenderHook {
 	Object3D body;
     int renderingIndex;
 	float advances;
+	
+	
+	
 	 // float ad = 0;
 	  /**
 		 * This is supposed to be called by the factory, not the user.
 		 * @param res
 		 * @throws FileNotFoundException
 		 */
-	public DistanceFieldString(
-			         String text,
-			         World world,
-			         FrameBuffer 
-			         framebufferReference,
-			         int x, int y,float scale,
-			         SimpleVector colour,
+	public DistanceFieldString(String text, World world,FrameBuffer  framebufferReference,
+			         int x, int y,float scale, SimpleVector colour,
 			         Map<String,DistanceFieldCharacter> characterData,
-			         GLSLShader shader)
+			         GLSLShader shader,
+			         int scx,
+			         int scy          
+			)
 	{
-		FirstxPos=x;
-		FirstyPos=y;
-		this.scale =scale;
+		//FirstxPos=x;
+		//FirstyPos=y;
+		//this.scale =scale;
 		this.colour = colour;
 		Overlayshader_ = shader;
 		characterOverlay = new Overlay(world, framebufferReference,"characters");
@@ -89,17 +93,21 @@ public class DistanceFieldString  implements IRenderHook {
 		body.setShader(Overlayshader_);	
 		body.setTransparency(3);
 		
+		screenx=scx;
+		screeny=scy;
 		
-	
+		screenposx  = (float)(screenx/2);
+		screenposy =  (float)(screeny/2);
+		texturesizex =(float) 256/(screenx/2);
+		texturesizey =(float) 256/(screeny/2);
 		
+
 		
 	}
 	
 	public void setUpOverlayStart()
 	{
-		 int xPos = Math.round((FirstxPos));// + (advancx))); 
-		 int yPos = FirstyPos ;//+ ((FirstyPos/2)*scale);//should only change if i add extra lines
-		 characterOverlay.setNewCoordinates(xPos,yPos, (int)(xPos+(256*scale)),(int) (yPos+(256*scale)));
+		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposy, (int)(screenposx+(256)),(int) (screenposy+(256)));
 		 characterOverlay.setDepth(0.0f);
 	}
 
@@ -127,11 +135,12 @@ public class DistanceFieldString  implements IRenderHook {
 		Overlayshader_.setUniform(a_colour,colour);
 		Overlayshader_.setUniform(bottomLeftx,charactersList[renderingIndex].bottomLeftx);
 		Overlayshader_.setUniform(bottomLefty, charactersList[renderingIndex].bottomLefty);	
+
+		Overlayshader_.setUniform("screenposx",1f);
+		Overlayshader_.setUniform("screenposy",1f);
 		
-		Overlayshader_.setUniform("screenposx",(float)FirstxPos/240);
-		Overlayshader_.setUniform("screenposy",(float)FirstyPos/400);
-		Overlayshader_.setUniform("texturesizex",(float)(254)/240);
-		Overlayshader_.setUniform("texturesizey",(float)(254)/400);
+		Overlayshader_.setUniform("texturesizex",texturesizex);
+		Overlayshader_.setUniform("texturesizey",texturesizey);
 
 		Overlayshader_.setUniform(realwidth,(charactersList[renderingIndex].realwidth));
 		Overlayshader_.setUniform(realheight,(charactersList[renderingIndex].realheight));
