@@ -1,10 +1,10 @@
-precision lowp float;
+precision highp float;
 // FRAGMENT SHADER
 
 uniform sampler2D textureUnit0;
 varying vec2 v_texCoord;
 varying vec4 v_color;
-varying float dontFill;
+//varying float dontFill;
 
 void main()
 { 
@@ -18,16 +18,9 @@ if( mask < 0.5 )
 clr.a = 0.0;// clr= vec4(0.5,0.9,0.1,1.0);
 else
 clr.a=1.0;
-//else  
-//clr.a = 1.0;
-// do some anti-aliasing
-//alpha = smoothstep( edge_min, edge_max, alphaDF );
-//if(dontFill == 1.0)
-//{
+
 clr.a *= smoothstep(0.25, 0.75, mask);
-//}
-// final color
-//gl_FragCoord.x = gl_FragCoord.x +10;
+
 gl_FragColor = clr; 
 }
 

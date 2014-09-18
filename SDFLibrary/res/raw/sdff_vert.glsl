@@ -1,4 +1,4 @@
-precision lowp float;
+precision highp float;
 // VERTEX SHADER
 
 //uniform mat4 modelViewProjectionMatrix;
@@ -18,8 +18,8 @@ uniform float height;
 uniform float realwidth;
 uniform float realheight;
 
-uniform float screenposx;
-uniform float screenposy;
+//uniform float screenposx;
+//uniform float screenposy;
 
 uniform float texturesizex;
 uniform float texturesizey;
@@ -52,15 +52,6 @@ float oldrange = (texturesizex)  ;
 float newrange = (realwidth)  ;
 float newvalue = (((x - texturesizex) * newrange) / oldrange);
 
-  
- //   float toRet=   /*1+*/(x-screenposx)*((screenposx+realwidth)-screenposx)/((screenposx+texturesizex)-screenposx);
-  //toRet*=2;
- // toRet -=1;
-//  toRet+=0.5;
-
- // newvalue*=2;
-//   newvalue -=1;
-//newvalue -=1;
 return newvalue;
 }
 
@@ -100,7 +91,7 @@ vec4 nearlast = projectionMatrix*((modelViewMatrix  * position));
 
 
 //vec4 newpos = vec4(       ,   ,0,0);
-vec4 newpos = vec4( ((offsetx)*2)-1 ,((offsety)*2)-1,0,0);
+vec4 newpos = vec4( ((offsetx)*2)-1 ,((offsety)*2)+1.99,0,0);
 
 gl_Position  = vec4(normalizeX(nearlast.x+1)-1,normalizeY(nearlast.y+1)-1,   nearlast.z,nearlast.w  )+newpos ;
 

@@ -30,15 +30,10 @@ public class DistanceFieldString  implements IRenderHook {
 	int screenx;
 	int screeny;
 	
-	
-//	float screenwidth=  2/480;
-	//float screenheight= 2/800;
-	
-	//int FirstxPos;
-	//int FirstyPos;
-	
+
 	float screenposx;
 	float screenposy;
+
 	float texturesizex;
 	float texturesizey;
 	//float scale;
@@ -62,17 +57,13 @@ public class DistanceFieldString  implements IRenderHook {
 		 * @param res
 		 * @throws FileNotFoundException
 		 */
-	public DistanceFieldString(String text, World world,FrameBuffer  framebufferReference,
-			         int x, int y,float scale, SimpleVector colour,
-			         Map<String,DistanceFieldCharacter> characterData,
-			         GLSLShader shader,
+	public DistanceFieldString(String text, World world,FrameBuffer  framebufferReference,int x, int y,float scale, SimpleVector colour,
+			         Map<String,DistanceFieldCharacter> characterData,GLSLShader shader,
 			         int scx,
 			         int scy          
 			)
 	{
-		//FirstxPos=x;
-		//FirstyPos=y;
-		//this.scale =scale;
+		
 		this.colour = colour;
 		Overlayshader_ = shader;
 		characterOverlay = new Overlay(world, framebufferReference,"characters");
@@ -82,8 +73,8 @@ public class DistanceFieldString  implements IRenderHook {
 	    
 		for (int i = 0;i < text.length(); i++)
 		 {
-			 char ch= text.charAt(i);
-			 int  charnum=(int)ch;
+			
+			 int  charnum=(int) text.charAt(i);
 			 charactersList[i]=  characterData.get(Integer.toString(charnum));
 		 }
 	    
@@ -96,10 +87,10 @@ public class DistanceFieldString  implements IRenderHook {
 		screenx=scx;
 		screeny=scy;
 		
-		screenposx  = (float)(screenx/2);
-		screenposy =  (float)(screeny/2);
-		texturesizex =(float) 256/(screenx/2);
-		texturesizey =(float) 256/(screeny/2);
+		screenposx  = (screenx/2);
+		screenposy =  (screeny/2);
+		texturesizex = 254/screenposx;
+		texturesizey = 254/screenposy;
 		
 
 		
@@ -107,7 +98,7 @@ public class DistanceFieldString  implements IRenderHook {
 	
 	public void setUpOverlayStart()
 	{
-		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposy, (int)(screenposx+(256)),(int) (screenposy+(256)));
+		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposx, (int)(screenposx+(254)),(int) (screenposy+(254)));
 		 characterOverlay.setDepth(0.0f);
 	}
 
@@ -136,8 +127,8 @@ public class DistanceFieldString  implements IRenderHook {
 		Overlayshader_.setUniform(bottomLeftx,charactersList[renderingIndex].bottomLeftx);
 		Overlayshader_.setUniform(bottomLefty, charactersList[renderingIndex].bottomLefty);	
 
-		Overlayshader_.setUniform("screenposx",1f);
-		Overlayshader_.setUniform("screenposy",1f);
+	//	Overlayshader_.setUniform("screenposx",1f);
+	//	Overlayshader_.setUniform("screenposy",1f);
 		
 		Overlayshader_.setUniform("texturesizex",texturesizex);
 		Overlayshader_.setUniform("texturesizey",texturesizey);
@@ -168,7 +159,7 @@ public class DistanceFieldString  implements IRenderHook {
 
 		renderNum(renderingIndex);
 
-    	Overlayshader_.setUniform(offsetx, (advances/480));
+    	Overlayshader_.setUniform(offsetx, advances);
 		Overlayshader_.setUniform(offsety,charactersList[renderingIndex].offsetY);
 		advances = advances + (charactersList[renderingIndex].advanceX);
 		
