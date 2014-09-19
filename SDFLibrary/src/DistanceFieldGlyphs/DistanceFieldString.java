@@ -121,8 +121,7 @@ public class DistanceFieldString  implements IRenderHook {
 	
 	
 	void renderNum(int renderingIndex)
-	{
-		
+	{	
 		Overlayshader_.setUniform(a_colour,colour);
 		Overlayshader_.setUniform(bottomLeftx,charactersList[renderingIndex].bottomLeftx);
 		Overlayshader_.setUniform(bottomLefty, charactersList[renderingIndex].bottomLefty);	
@@ -139,8 +138,6 @@ public class DistanceFieldString  implements IRenderHook {
 		
 		Overlayshader_.setUniform(width,charactersList[renderingIndex].width);
 		Overlayshader_.setUniform(height,charactersList[renderingIndex].height);
-		
-
 	}
 	
 	
@@ -152,7 +149,7 @@ public class DistanceFieldString  implements IRenderHook {
 		{
 		if( 	renderingIndex==1)
 		{
-		advances = advances + (charactersList[0].advanceX);
+		advances = charactersList[0].advanceX;
 		}
 		
 		
