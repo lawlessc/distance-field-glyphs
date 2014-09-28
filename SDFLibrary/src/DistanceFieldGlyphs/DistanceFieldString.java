@@ -63,7 +63,6 @@ public class DistanceFieldString  implements IRenderHook {
 			         int scy          
 			)
 	{
-		
 		this.colour = colour;
 		Overlayshader_ = shader;
 		characterOverlay = new Overlay(world, framebufferReference,"characters");
@@ -111,11 +110,8 @@ public class DistanceFieldString  implements IRenderHook {
 	@Override
 	public void beforeRendering(int arg0) {
 		renderNum(0);
-
 		Overlayshader_.setUniform(offsetx,0f);
-		Overlayshader_.setUniform(offsety,charactersList[0].offsetY);
-		
-		
+		Overlayshader_.setUniform(offsety,charactersList[0].offsetY);	
 	}
 	
 	
@@ -171,26 +167,18 @@ public class DistanceFieldString  implements IRenderHook {
 	
 	@Override
 	public void onDispose() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void setCurrentObject3D(Object3D arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void setCurrentShader(GLSLShader arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void setTransparency(float arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

@@ -21,14 +21,8 @@ public class DistanceFieldCharacter {
 	float width;
 	float height;
 	
-	float widthDifference;
-	float heightDifference;
-	
 	float realwidth;
 	float realheight;
-	
-	float bminusAx;
-	float bminusAy;
 
 	float offsetX;
 	float offsetY;
@@ -39,9 +33,7 @@ public class DistanceFieldCharacter {
 	DistanceFieldCharacter(int Size,float x,float y,float w,float h,float offsetx,float offsety,float advance,GLSLShader Ov,
 			 int screenx,int screeny)
 	{
-		
 		float mainTextureSize=(float)Size;
-
 		
 		bottomLeftx = (x/mainTextureSize);
 		bottomLefty = (y/mainTextureSize);
@@ -49,15 +41,12 @@ public class DistanceFieldCharacter {
 		width = mainTextureSize/w ;
 		height = mainTextureSize/h ;
 		
-		
 		realwidth  = (w/(float)screenx);   
 		realheight = (h/(float)screeny);
 		
 		offsetX= (offsetx/(float)screenx);
 		offsetY= (offsety/(float)screeny);
 		advanceX= advance/(float)screenx;
-
- 
 	}
 
     

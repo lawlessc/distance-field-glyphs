@@ -19,7 +19,7 @@ clr.a = 0.0;// clr= vec4(0.5,0.9,0.1,1.0);
 else
 clr.a=1.0;
 
-clr.a *= smoothstep(0.25, 0.75, mask);
+clr.a = clr.a* smoothstep(0.25, 0.75, mask);
 
 gl_FragColor = clr; 
 }
