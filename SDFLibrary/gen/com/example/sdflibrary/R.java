@@ -16,6 +16,7 @@ public final class R {
     public static final class raw {
         public static int sdff_frag=0x7f030000;
         public static int sdff_vert=0x7f030001;
+        public static int sdfg_vert=0x7f030002;
     }
     public static final class string {
         public static int app_name=0x7f040000;
