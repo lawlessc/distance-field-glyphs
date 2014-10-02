@@ -1,5 +1,7 @@
 package DistanceFieldGlyphs;
 
+import android.util.Log;
+
 import com.threed.jpct.GLSLShader;
 import com.threed.jpct.IRenderHook;
 import com.threed.jpct.Object3D;
@@ -41,16 +43,16 @@ public class DistanceFieldCharacter {
 		width = mainTextureSize/w ;
 		height = mainTextureSize/h ;
 		
-		//float widthxx = mainTextureSize/w ;
-		//float heightxx = mainTextureSize/h ;
+
 		
 		realwidth  = (w/(float)screenx);   
 		realheight = (h/(float)screeny);
 		
 		offsetX= (offsetx/(float)screenx)-realwidth;
 		offsetY= (offsety/(float)screeny)-realheight;
-		
-		
+	//	offsetY =-offsetY;
+		//Log.v("realheight", Float.toString(realheight));
+		//Log.v("offsetY", Float.toString(offsetY));
 		
 		
 		advanceX= (advance/(float)screenx);
