@@ -48,8 +48,10 @@ public class DistanceFieldCharacter {
 		realwidth  = (w/(float)screenx);   
 		realheight = (h/(float)screeny);
 		
-		offsetX= (offsetx/(float)screenx)-realwidth;
-		offsetY= (offsety/(float)screeny)-realheight;
+		
+		
+		offsetX= (offsetx/(float)(screenx/2))-realwidth; 
+		offsetY= (offsety/(float)(screeny/2))-realheight;
 	//	offsetY =-offsetY;
 		//Log.v("realheight", Float.toString(realheight));
 		//Log.v("offsetY", Float.toString(offsetY));
