@@ -202,7 +202,7 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 						R.raw.characterpositions,R.raw.sdffont);
 
 	
-			  txt.createText("Peter pepper picked a pepper ! 321 ", 240, 400, 1f)	;
+			  txt.createText("PppmnKLllpp !2£$%^321 ", 240, 400, 1f)	;
 			
 			  
 				

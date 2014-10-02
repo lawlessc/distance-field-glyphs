@@ -41,12 +41,19 @@ public class DistanceFieldCharacter {
 		width = mainTextureSize/w ;
 		height = mainTextureSize/h ;
 		
+		//float widthxx = mainTextureSize/w ;
+		//float heightxx = mainTextureSize/h ;
+		
 		realwidth  = (w/(float)screenx);   
 		realheight = (h/(float)screeny);
 		
-		offsetX= (offsetx/(float)screenx);
-		offsetY= (offsety/(float)screeny);
-		advanceX= advance/(float)screenx;
+		offsetX= (offsetx/(float)screenx)-realwidth;
+		offsetY= (offsety/(float)screeny)-realheight;
+		
+		
+		
+		
+		advanceX= (advance/(float)screenx);
 	}
 
     

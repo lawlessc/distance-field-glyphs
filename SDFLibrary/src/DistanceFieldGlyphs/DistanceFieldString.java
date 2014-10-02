@@ -73,7 +73,7 @@ public class DistanceFieldString  implements IRenderHook {
 		for (int i = 0;i < text.length(); i++)
 		 {
 			
-			 int  charnum=(int) text.charAt(i);
+			 int  charnum=(int) text.charAt(i);                     //charnum
 			 charactersList[i]=  characterData.get(Integer.toString(charnum));
 		 }
 	    
