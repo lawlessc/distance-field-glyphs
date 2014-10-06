@@ -33,6 +33,9 @@ public class DistanceFieldString  implements IRenderHook {
 
 	float screenposx;
 	float screenposy;
+	
+	float x;
+	float y;
 
 	float texturesizex;
 	float texturesizey;
@@ -57,12 +60,16 @@ public class DistanceFieldString  implements IRenderHook {
 		 * @param res
 		 * @throws FileNotFoundException
 		 */
-	public DistanceFieldString(String text, World world,FrameBuffer  framebufferReference,int x, int y,float scale, SimpleVector colour,
+	public DistanceFieldString(String text, World world,FrameBuffer  framebufferReference,float x, float y,float scale, SimpleVector colour,
 			         Map<String,DistanceFieldCharacter> characterData,GLSLShader shader,
 			         int scx,
 			         int scy          
 			)
 	{
+		
+		this.x=x;
+		this.y=y;
+		
 		this.colour = colour;
 		Overlayshader_ = shader;
 		characterOverlay = new Overlay(world, framebufferReference,"characters");
@@ -88,8 +95,8 @@ public class DistanceFieldString  implements IRenderHook {
 		
 		screenposx  = (screenx/2);
 		screenposy =  (screeny/2);
-		texturesizex = 254/screenposx;
-		texturesizey = 254/screenposy;
+		texturesizex = 256/screenposx;
+		texturesizey = 256/screenposy;
 		
 
 		
@@ -97,7 +104,7 @@ public class DistanceFieldString  implements IRenderHook {
 	
 	public void setUpOverlayStart()
 	{
-		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposx, (int)(screenposx+(254)),(int) (screenposy+(254)));
+		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposx, (int)(screenposx+(256)),(int) (screenposy+(256)));
 		 characterOverlay.setDepth(0.0f);
 	}
 
@@ -122,8 +129,8 @@ public class DistanceFieldString  implements IRenderHook {
 		Overlayshader_.setUniform(bottomLeftx,charactersList[renderingIndex].bottomLeftx);
 		Overlayshader_.setUniform(bottomLefty, charactersList[renderingIndex].bottomLefty);	
 
-	//	Overlayshader_.setUniform("screenposx",1f);
-	//	Overlayshader_.setUniform("screenposy",1f);
+		Overlayshader_.setUniform("screenposx",x);
+		Overlayshader_.setUniform("screenposy",y);
 		
 		Overlayshader_.setUniform("texturesizex",texturesizex);
 		Overlayshader_.setUniform("texturesizey",texturesizey);

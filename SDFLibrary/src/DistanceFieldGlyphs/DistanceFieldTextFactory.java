@@ -65,7 +65,7 @@ public class DistanceFieldTextFactory  {
 	
 
 	
-	public    void   createText(String text,int x, int y, float scale)
+	public    void   createText(String text,float x, float y, float scale)
 	{
        DistanceFieldString testString = new  DistanceFieldString(text, worldReference,framebufferReference, 
                                               x,y, scale,new SimpleVector(1f,1f,1f),

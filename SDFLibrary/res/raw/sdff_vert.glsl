@@ -11,6 +11,8 @@ uniform float width;
 uniform float height;
 //////////////////////////////
 
+//////////////////////////////
+//These are for setting characters on screen possition and size
 uniform float realwidth;
 uniform float realheight;
 
@@ -20,6 +22,9 @@ uniform float texturesizey;
 uniform float offsetx;
 uniform float offsety;
 
+uniform float screenposx;
+uniform float screenposy;
+////////////////////////////////////////////////////////////
 
 uniform vec3 a_colour;
 
@@ -63,7 +68,7 @@ v_color = vec4(a_colour,1.0);
 vec4 nearlast = projectionMatrix*((modelViewMatrix  * position));
 
 
-vec4 newpos = vec4( ((offsetx)*2.0)-1.0 ,((offsety)*2.0)+1.0,0,0);
+vec4 newpos = vec4( ((offsetx)*2.0)-screenposx ,((offsety)*2.0)+screenposy,0,0);
 
 gl_Position  = vec4(normalizeX(nearlast.x+1.0)-1.0,normalizeY(nearlast.y+1.0)-1.0,   nearlast.z,nearlast.w  )+newpos ;
 
