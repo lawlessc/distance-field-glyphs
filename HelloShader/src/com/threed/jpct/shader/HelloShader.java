@@ -65,8 +65,11 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 
 	private float scale = 0.05f;
 	
-	DistanceFieldTextFactory txt;
-
+	DistanceFieldTextFactory latin_txt;
+	DistanceFieldTextFactory rongorongo_txt;
+	DistanceFieldTextFactory hieroglyphs_txt;
+	
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		Logger.log("onCreate");
 		Logger.setLogLevel(Logger.LL_DEBUG);
@@ -195,17 +198,34 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 				Texture height = new Texture(res.openRawResource(R.raw.face_height2));
 
 				plane = Primitives.getPlane(1, 100);
-				
+				////////////////////////////////////////////////////////////////////////////
+				//////////////This code demonstrates the distance field factories being set up
+
+				latin_txt = new DistanceFieldTextFactory(fb,world,res,480,800,
+						R.raw.characterpositions,R.raw.sdffont ,"latintexture");
 				
 
-				txt = new DistanceFieldTextFactory(fb,world,res,480,800,
-						R.raw.characterpositions,R.raw.sdffont);
-
+			   rongorongo_txt = new DistanceFieldTextFactory(fb,world,res,480,800,
+						R.raw.rongopos , R.raw.rongosdf,"rongotexture");
+				
+			   
+			   hieroglyphs_txt = new DistanceFieldTextFactory(fb,world,res,480,800,
+						R.raw.hieroglyphspos , R.raw.hieroglyphssdf,"hierotexture");
+			   
+			   ////////This is the same factories being used to generate text;
+			   
+			   rongorongo_txt.createText("Hello World ABCPp Kk", 1.0f, 1.4f, 1f)	;
 	
-			  txt.createText("PppmnKLllpp !2£$%^321 ", 1.0f, 1.0f, 1f)	;
-			
+			   latin_txt.createText("Hello World !2£$%^321 ", 1.0f, 1.0f, 1f)	;
+			   
+			   
+			   hieroglyphs_txt.createText("Hello World ", 1.0f, 0.5f, 1f)	;
 			  
-				
+
+			 
+			   
+			  
+			/////////////////////////////////////////////////////////////////	
 
 				TexelGrabber grabber = new TexelGrabber();
 				height.setEffect(grabber);

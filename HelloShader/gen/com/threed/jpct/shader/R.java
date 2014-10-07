@@ -24,13 +24,17 @@ public final class R {
         public static final int face_height2=0x7f040003;
         public static final int face_norm=0x7f040004;
         public static final int fragmentshader_offset=0x7f040005;
-        public static final int numbers=0x7f040006;
-        public static final int sdff_frag=0x7f040007;
-        public static final int sdff_vert=0x7f040008;
-        public static final int sdffont=0x7f040009;
-        public static final int sdfg_vert=0x7f04000a;
-        public static final int tea=0x7f04000b;
-        public static final int vertexshader_offset=0x7f04000c;
+        public static final int hieroglyphspos=0x7f040006;
+        public static final int hieroglyphssdf=0x7f040007;
+        public static final int numbers=0x7f040008;
+        public static final int rongopos=0x7f040009;
+        public static final int rongosdf=0x7f04000a;
+        public static final int sdff_frag=0x7f04000b;
+        public static final int sdff_vert=0x7f04000c;
+        public static final int sdffont=0x7f04000d;
+        public static final int sdfg_vert=0x7f04000e;
+        public static final int tea=0x7f04000f;
+        public static final int vertexshader_offset=0x7f040010;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

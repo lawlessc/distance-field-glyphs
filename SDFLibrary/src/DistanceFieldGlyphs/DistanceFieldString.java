@@ -52,6 +52,8 @@ public class DistanceFieldString  implements IRenderHook {
     int renderingIndex;
 	float advances;
 	
+	String textureName = null;
+	
 	
 	
 	 // float ad = 0;
@@ -63,16 +65,17 @@ public class DistanceFieldString  implements IRenderHook {
 	public DistanceFieldString(String text, World world,FrameBuffer  framebufferReference,float x, float y,float scale, SimpleVector colour,
 			         Map<String,DistanceFieldCharacter> characterData,GLSLShader shader,
 			         int scx,
-			         int scy          
+			         int scy,
+			         String texturename
 			)
 	{
 		
 		this.x=x;
 		this.y=y;
-		
+		this.textureName= texturename;
 		this.colour = colour;
 		Overlayshader_ = shader;
-		characterOverlay = new Overlay(world, framebufferReference,"characters");
+		characterOverlay = new Overlay(world, framebufferReference,textureName);
 	    renderingIndex=0;
 	    advances=0;
 	    charactersList = new DistanceFieldCharacter[text.length()];

@@ -40,7 +40,7 @@ public class DistanceFieldTextFactory  {
 	static int textureSize = 128;
     int screen_dimension_x;
     int screen_dimension_y;
-	
+	String textureName= null; //As their may be factories for multiple fonts, it's necessary to name their textures uniquely
 	
 	FrameBuffer framebufferReference;
     World worldReference;
@@ -52,13 +52,17 @@ public class DistanceFieldTextFactory  {
     
     int bitmapID;
 	
-	public DistanceFieldTextFactory(FrameBuffer fb,World wr ,Resources res,int screenx, int screeny , int character_positions_text, int bitmapid)
+	public DistanceFieldTextFactory(FrameBuffer fb,World wr ,Resources res,int screenx, int screeny , 
+			                         int character_positions_text, int bitmapid,String texturename)
 	{
+		
+		
 		framebufferReference=fb;
 		worldReference=wr;
 		bitmapID=bitmapid;
 		screen_dimension_x=screenx;
 		screen_dimension_y=screeny;
+		textureName=texturename;
 		setup(res,character_positions_text,bitmapid);
 	}
 	
@@ -70,7 +74,8 @@ public class DistanceFieldTextFactory  {
        DistanceFieldString testString = new  DistanceFieldString(text, worldReference,framebufferReference, 
                                               x,y, scale,new SimpleVector(1f,1f,1f),
                                               characterData,Overlayshader_,
-                                              screen_dimension_x,screen_dimension_y
+                                              screen_dimension_x,screen_dimension_y,
+                                              textureName
                                               );
 	}
 	
@@ -83,7 +88,7 @@ public class DistanceFieldTextFactory  {
 		
 		   TextureManager tm = TextureManager.getInstance();
 		   Texture tex=new Texture(Allcharacters);
-		   tm.addTexture("characters", tex);
+		   tm.addTexture(textureName, tex);
 		
 	
 		try {
