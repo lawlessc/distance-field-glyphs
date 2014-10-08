@@ -19,14 +19,9 @@ You can then create the Factory on starting your application and use it to add f
 to the application.
 
 
-Some possible problems that should be noted at the moment:
 
-*I haven't yet done anything to handle changes in screen ortientation.so rotating your device will likely leave you
-with some very skewed text.
 
-*I need to add code for removing and changing text too.
 
-*The code for this is messy and unoptimized now with many poorly named variables.
 
 
 
@@ -36,7 +31,23 @@ with some very skewed text.
 
 
 The font's used come from
+==========================================================
 http://www.geo.sbg.ac.at/borromae/rk_afont.htm 
 http://www.dafont.com/rongorongo.font
 
 the latin script font is the Google Roboto font.
+
+
+
+Some possible problems that should be noted at the moment:
+==========================================================
+
+
+
+
+* I haven't yet done anything to handle changes in screen ortientation.so rotating your device will likely leave you
+with some very skewed text.
+
+* I need to add code for removing and changing text too.
+
+* The code for this is messy and unoptimized now with many poorly named variables.
