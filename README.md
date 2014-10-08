@@ -20,6 +20,7 @@ to the application.
 
 
 Some possible problems that should be noted at the moment:
+
 *I haven't yet done anything to handle changes in screen ortientation.so rotating your device will likely leave you
 with some very skewed text.
 
