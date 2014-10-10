@@ -49,6 +49,7 @@ public class DistanceFieldString  implements IRenderHook {
 	Overlay characterOverlay;
 	GLSLShader Overlayshader_ = null;
 	Object3D body;
+	World world;
     int renderingIndex;
 	float advances;
 	
@@ -79,7 +80,7 @@ public class DistanceFieldString  implements IRenderHook {
 	    renderingIndex=0;
 	    advances=0;
 	    charactersList = new DistanceFieldCharacter[text.length()];
-	    
+	    this.world=world;
 		for (int i = 0;i < text.length(); i++)
 		 {
 			
@@ -109,6 +110,14 @@ public class DistanceFieldString  implements IRenderHook {
 	{
 		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposx, (int)(screenposx+(256)),(int) (screenposy+(256)));
 		 characterOverlay.setDepth(0.0f);
+	}
+	
+	
+	
+	public void update(String newstring)
+	{
+		
+		
 	}
 
 	@Override
@@ -157,8 +166,6 @@ public class DistanceFieldString  implements IRenderHook {
 		{
 		advances = charactersList[0].advanceX;
 		}
-		
-		
 
 		renderNum(renderingIndex);
 
@@ -189,6 +196,16 @@ public class DistanceFieldString  implements IRenderHook {
 
 	@Override
 	public void setTransparency(float arg0) {
+	}
+	
+	// im not sure if this is being correctly removed from the program.
+	public void dispose()
+	{
+		world.removeObject(body);
+	//	characterOverlay.unlink();
+		
+		//this.dispose();
+		
 	}
 
 

@@ -52,8 +52,8 @@ public class DistanceFieldTextFactory  {
     
     int bitmapID;
 	
-	public DistanceFieldTextFactory(FrameBuffer fb,World wr ,Resources res,int screenx, int screeny , 
-			                         int character_positions_text, int bitmapid,String texturename)
+	public  DistanceFieldTextFactory(FrameBuffer fb,World wr ,Resources res,int screenx, int screeny , 
+			                     int character_positions_text, int bitmapid,String texturename)
 	{
 		
 		
@@ -69,7 +69,7 @@ public class DistanceFieldTextFactory  {
 	
 
 	
-	public    void   createText(String text,float x, float y, float scale)
+	public    DistanceFieldString   createText(String text,float x, float y, float scale)
 	{
        DistanceFieldString testString = new  DistanceFieldString(text, worldReference,framebufferReference, 
                                               x,y, scale,new SimpleVector(1f,1f,1f),
@@ -77,6 +77,7 @@ public class DistanceFieldTextFactory  {
                                               screen_dimension_x,screen_dimension_y,
                                               textureName
                                               );
+	return testString;
 	}
 	
 
