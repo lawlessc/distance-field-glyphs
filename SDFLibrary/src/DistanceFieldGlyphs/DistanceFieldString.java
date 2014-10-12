@@ -201,10 +201,12 @@ public class DistanceFieldString  implements IRenderHook {
 	// im not sure if this is being correctly removed from the program.
 	public void dispose()
 	{
-		world.removeObject(body);
-	//	characterOverlay.unlink();
+		//world.removeObject(body);
+	
 		
-		//this.dispose();
+		//characterOverlay.unlink(); this is just dumb
+		
+		characterOverlay.dispose();
 		
 	}
 

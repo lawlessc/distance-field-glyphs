@@ -38,8 +38,8 @@ public class DistanceFieldTextFactory  {
 	public GLSLShader Overlayshader_ = null;
 	static Bitmap Allcharacters;
 	static int textureSize = 128;
-    int screen_dimension_x;
-    int screen_dimension_y;
+  //  int screen_dimension_x;
+   // int screen_dimension_y;
 	String textureName= null; //As their may be factories for multiple fonts, it's necessary to name their textures uniquely
 	
 	FrameBuffer framebufferReference;
@@ -52,7 +52,7 @@ public class DistanceFieldTextFactory  {
     
     int bitmapID;
 	
-	public  DistanceFieldTextFactory(FrameBuffer fb,World wr ,Resources res,int screenx, int screeny , 
+	public  DistanceFieldTextFactory(FrameBuffer fb,World wr ,Resources res , 
 			                     int character_positions_text, int bitmapid,String texturename)
 	{
 		
@@ -60,8 +60,7 @@ public class DistanceFieldTextFactory  {
 		framebufferReference=fb;
 		worldReference=wr;
 		bitmapID=bitmapid;
-		screen_dimension_x=screenx;
-		screen_dimension_y=screeny;
+	
 		textureName=texturename;
 		setup(res,character_positions_text,bitmapid);
 	}
@@ -74,7 +73,7 @@ public class DistanceFieldTextFactory  {
        DistanceFieldString testString = new  DistanceFieldString(text, worldReference,framebufferReference, 
                                               x,y, scale,new SimpleVector(1f,1f,1f),
                                               characterData,Overlayshader_,
-                                              screen_dimension_x,screen_dimension_y,
+                                              framebufferReference.getWidth(), framebufferReference.getHeight(),
                                               textureName
                                               );
 	return testString;
@@ -140,10 +139,13 @@ public class DistanceFieldTextFactory  {
 		    float offsetY=Float.parseFloat(numstrs[7].substring(8));
 		    
 		    float ad =  Float.parseFloat(numstrs[8].substring(9));
+		    
+		    
+		   
 		                                             
 		    DistanceFieldCharacter newChar = new DistanceFieldCharacter(Allcharacters.getWidth(),
 		    		                                x,y,width,height ,offsetX,offsetY ,ad,
-		    		                                Overlayshader_, screen_dimension_x,screen_dimension_y);
+		    		                                Overlayshader_,  framebufferReference.getWidth(), framebufferReference.getHeight());
 		    characterData.put(ID, newChar);
 			}
 			

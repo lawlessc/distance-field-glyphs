@@ -201,15 +201,15 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 				////////////////////////////////////////////////////////////////////////////
 				//////////////This code demonstrates the distance field factories being set up
 
-				latin_txt = new DistanceFieldTextFactory(fb,world,res,480,800,
+				latin_txt = new DistanceFieldTextFactory(fb,world,res,
 						R.raw.characterpositions,R.raw.sdffont ,"latintexture");
 				
 
-			   rongorongo_txt = new DistanceFieldTextFactory(fb,world,res,480,800,
+			   rongorongo_txt = new DistanceFieldTextFactory(fb,world,res,
 						R.raw.rongopos , R.raw.rongosdf,"rongotexture");
 				
 			   
-			   hieroglyphs_txt = new DistanceFieldTextFactory(fb,world,res,480,800,
+			   hieroglyphs_txt = new DistanceFieldTextFactory(fb,world,res,
 						R.raw.hieroglyphspos , R.raw.hieroglyphssdf,"hierotexture");
 			   
 			   ////////This is the same factories being used to generate text;
