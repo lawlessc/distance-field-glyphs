@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import DistanceFieldGlyphs.DistanceFieldTextFactory;
+import DistanceFieldGlyphs.DistanceFieldFactory;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.opengl.GLSurfaceView;
@@ -65,9 +65,9 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 
 	private float scale = 0.05f;
 	
-	DistanceFieldTextFactory latin_txt;
-	DistanceFieldTextFactory rongorongo_txt;
-	DistanceFieldTextFactory hieroglyphs_txt;
+	DistanceFieldFactory latin_txt;
+	DistanceFieldFactory rongorongo_txt;
+	DistanceFieldFactory hieroglyphs_txt;
 	
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -201,15 +201,15 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 				////////////////////////////////////////////////////////////////////////////
 				//////////////This code demonstrates the distance field factories being set up
 
-				latin_txt = new DistanceFieldTextFactory(fb,world,res,
+				latin_txt = new DistanceFieldFactory(fb,world,res,
 						R.raw.characterpositions,R.raw.sdffont ,"latintexture");
 				
 
-			   rongorongo_txt = new DistanceFieldTextFactory(fb,world,res,
+			   rongorongo_txt = new DistanceFieldFactory(fb,world,res,
 						R.raw.rongopos , R.raw.rongosdf,"rongotexture");
 				
 			   
-			   hieroglyphs_txt = new DistanceFieldTextFactory(fb,world,res,
+			   hieroglyphs_txt = new DistanceFieldFactory(fb,world,res,
 						R.raw.hieroglyphspos , R.raw.hieroglyphssdf,"hierotexture");
 			   
 			   ////////This is the same factories being used to generate text;

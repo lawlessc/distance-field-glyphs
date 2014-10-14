@@ -12,10 +12,10 @@ int raw hieroglyphssdf 0x7f040007
 int raw numbers 0x7f040008
 int raw rongopos 0x7f040009
 int raw rongosdf 0x7f04000a
-int raw sdff_frag 0x7f04000b
-int raw sdff_vert 0x7f04000c
-int raw sdffont 0x7f04000d
-int raw sdfg_vert 0x7f04000e
+int raw sdf_vert 0x7f04000b
+int raw sdff_char_vert 0x7f04000c
+int raw sdff_frag 0x7f04000d
+int raw sdffont 0x7f04000e
 int raw tea 0x7f04000f
 int raw vertexshader_offset 0x7f040010
 int string app_name 0x7f050000

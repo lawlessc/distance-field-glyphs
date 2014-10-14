@@ -29,10 +29,10 @@ public final class R {
         public static final int numbers=0x7f040008;
         public static final int rongopos=0x7f040009;
         public static final int rongosdf=0x7f04000a;
-        public static final int sdff_frag=0x7f04000b;
-        public static final int sdff_vert=0x7f04000c;
-        public static final int sdffont=0x7f04000d;
-        public static final int sdfg_vert=0x7f04000e;
+        public static final int sdf_vert=0x7f04000b;
+        public static final int sdff_char_vert=0x7f04000c;
+        public static final int sdff_frag=0x7f04000d;
+        public static final int sdffont=0x7f04000e;
         public static final int tea=0x7f04000f;
         public static final int vertexshader_offset=0x7f040010;
     }
