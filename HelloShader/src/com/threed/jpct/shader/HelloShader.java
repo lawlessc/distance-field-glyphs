@@ -6,6 +6,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import DistanceFieldGlyphs.DistanceFieldFactory;
+import DistanceFieldGlyphs.SpatialGlyph;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.opengl.GLSurfaceView;
@@ -212,6 +213,9 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 			   hieroglyphs_txt = new DistanceFieldFactory(fb,world,res,
 						R.raw.hieroglyphspos , R.raw.hieroglyphssdf,"hierotexture");
 			   
+			   
+			   SpatialGlyph testxx = latin_txt.createGlyph(R.raw.eye_of_horus, new SimpleVector(1f, 1f,1f), res,"testexture");
+			   testxx.setAttachmentObject(plane);
 			   ////////This is the same factories being used to generate text;
 			   
 			   rongorongo_txt.createText("Hello World ABCPp Kk", 1.0f, 1.4f, 1f)	;

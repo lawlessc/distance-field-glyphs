@@ -9,6 +9,7 @@ import com.threed.jpct.IRenderHook;
 import com.threed.jpct.Loader;
 import com.threed.jpct.Object3D;
 import com.threed.jpct.Primitives;
+import com.threed.jpct.SimpleVector;
 import com.threed.jpct.Texture;
 import com.threed.jpct.TextureInfo;
 import com.threed.jpct.TextureManager;
@@ -20,38 +21,45 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	private Object3D plane;
 	private World world;
+	SimpleVector colour;
+	GLSLShader shader;
 	
 	
-	
-	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader)
+	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, World world, SimpleVector colour)
 	{
+		
+		this.world=world;
+		this.colour= colour;
+		this.shader=shader;
 		TextureManager tm = TextureManager.getInstance();
 		Texture glyph = new Texture(res.openRawResource(texture),true);
 		tm.addTexture(glyphname, glyph);
-
+       
 	
-		plane = Primitives.getPlane(1, 1.0F);
+		plane = Primitives.getPlane(1, 40.0F);
         plane.setTexture(glyphname);
 	    TextureManager.getInstance().getTexture(glyphname).setMipmap(false);
 
-
-
-//		shader = new GLSLShader(Loader.loadTextFile(res.openRawResource(R.raw.vertexshader_offset)), Loader.loadTextFile(res.openRawResource(R.raw.fragmentshader_offset)));
-//		plane.setShader(shader);
+        
+        plane.setRenderHook(this);
+      	plane.setShader(shader);
+      	plane.setBillboarding(true);
 //		plane.setSpecularLighting(true);
 //		shader.setStaticUniform("invRadius", 0.0003f);
 //
 //		plane.build();
 //		plane.strip();
 //
-//		world.addObject(plane);
+   
 	}
 	
 	
 	
-	public void setAttachmentObject()
+	public void setAttachmentObject(Object3D parent)
 	{
-		
+		addToWorld();
+		parent.addChild(plane);
+		plane.translate(0,-10,0);
 		
 	}
 	
@@ -70,6 +78,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 
 	@Override
 	public void afterRendering(int arg0) {
+		shader.setUniform("a_colour",colour);
 		// TODO Auto-generated method stub
 		
 	}
