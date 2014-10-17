@@ -33,6 +33,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 		this.shader=shader;
 		TextureManager tm = TextureManager.getInstance();
 		Texture glyph = new Texture(res.openRawResource(texture),true);
+		glyph.setMipmap(false);
 		tm.addTexture(glyphname, glyph);
        
 	

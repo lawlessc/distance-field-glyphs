@@ -220,7 +220,7 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 			   
 			   rongorongo_txt.createText("Hello World ABCPp Kk", 1.0f, 1.4f, 1f)	;
 	
-			   latin_txt.createText("Hello World !2£$%^321 ", 1.0f, 1.0f, 1f)	;
+			   latin_txt.createText("Hello World !2£$%^321 ", 0.9f, 1.0f, 1f)	;
 			   
 			   
 			   hieroglyphs_txt.createText("Hello World ", 1.0f, 0.5f, 1f)	;
