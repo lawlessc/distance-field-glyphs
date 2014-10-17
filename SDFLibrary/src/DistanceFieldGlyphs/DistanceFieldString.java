@@ -99,8 +99,8 @@ public class DistanceFieldString  implements IRenderHook {
 		
 		screenposx  = (screenx/2);
 		screenposy =  (screeny/2);
-		texturesizex = 256/screenposx;
-		texturesizey = 256/screenposy;
+		texturesizex = 512/screenposx;
+		texturesizey = 512/screenposy;
 		
 
 		
@@ -108,7 +108,7 @@ public class DistanceFieldString  implements IRenderHook {
 	
 	public void setUpOverlayStart()
 	{
-		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposx, (int)(screenposx+(256)),(int) (screenposy+(256)));
+		 characterOverlay.setNewCoordinates((int)screenposx,(int)screenposx, (int)(screenposx+(512)),(int) (screenposy+(512)));
 		 characterOverlay.setDepth(0.0f);
 	}
 	

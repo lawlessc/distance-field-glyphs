@@ -43,14 +43,8 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
         
         plane.setRenderHook(this);
       	plane.setShader(shader);
-      	plane.setBillboarding(true);
-//		plane.setSpecularLighting(true);
-//		shader.setStaticUniform("invRadius", 0.0003f);
-//
-//		plane.build();
-//		plane.strip();
-//
-   
+      	plane.setTransparency(3);
+      	plane.setBillboarding(true);   
 	}
 	
 	
