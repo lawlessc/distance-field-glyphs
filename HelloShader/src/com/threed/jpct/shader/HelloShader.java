@@ -214,7 +214,7 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 						R.raw.hieroglyphspos , R.raw.hieroglyphssdf,"hierotexture");
 			   
 			   
-			   SpatialGlyph testxx = latin_txt.createGlyph(R.raw.eye_of_horus, new SimpleVector(1f, 1f,1f), res,"testexture");
+			   SpatialGlyph testxx = latin_txt.createGlyph(R.raw.eye_of_horussdf, new SimpleVector(1f, 1f,1f), res,"testexture");
 			   testxx.setAttachmentObject(plane);
 			   ////////This is the same factories being used to generate text;
 			   

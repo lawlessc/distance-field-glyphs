@@ -19,7 +19,7 @@ public final class R {
     }
     public static final class raw {
         public static final int characterpositions=0x7f040000;
-        public static final int eye_of_horus=0x7f040001;
+        public static final int eye_of_horussdf=0x7f040001;
         public static final int face=0x7f040002;
         public static final int face_height2=0x7f040003;
         public static final int face_norm=0x7f040004;

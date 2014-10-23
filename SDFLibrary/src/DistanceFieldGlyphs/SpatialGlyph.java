@@ -54,7 +54,9 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	{
 		addToWorld();
 		parent.addChild(plane);
-		plane.translate(0,-10,0);
+		plane.translate(0,10,0);
+		
+		//plane.
 		
 	}
 	

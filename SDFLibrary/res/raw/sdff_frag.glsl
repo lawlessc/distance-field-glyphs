@@ -15,7 +15,7 @@ vec4 clr;
 clr = v_color;
 // perform simple thresholding
 if( mask < 0.5 )
-clr.a = 0.0;// clr= vec4(0.5,0.9,0.1,1.0);
+clr.a = 0.0;
 else
 clr.a=1.0;
 

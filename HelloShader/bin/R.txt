@@ -2,7 +2,7 @@ int drawable ic_launcher 0x7f020000
 int drawable icon 0x7f020001
 int layout main 0x7f030000
 int raw characterpositions 0x7f040000
-int raw eye_of_horus 0x7f040001
+int raw eye_of_horussdf 0x7f040001
 int raw face 0x7f040002
 int raw face_height2 0x7f040003
 int raw face_norm 0x7f040004
