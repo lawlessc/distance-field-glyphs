@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import android.content.res.Resources;
 
+import com.threed.jpct.Camera;
 import com.threed.jpct.GLSLShader;
 import com.threed.jpct.IRenderHook;
 import com.threed.jpct.Loader;
@@ -15,6 +16,8 @@ import com.threed.jpct.TextureInfo;
 import com.threed.jpct.TextureManager;
 import com.threed.jpct.World;
 
+
+
                                                    //serialization is desktop jpct only i believe
 public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
@@ -24,6 +27,10 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	SimpleVector colour;
 	GLSLShader shader;
 	
+	
+	//these are to keep the object attached and rotating with the camera
+	Camera    camera;// if connected to a camera
+	Object3D  camobj;
 	
 	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, World world, SimpleVector colour)
 	{
@@ -37,10 +44,9 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 		tm.addTexture(glyphname, glyph);
        
 	
-		plane = Primitives.getPlane(1, 40.0F);
+		plane = Primitives.getPlane(1, 4.0F);
         plane.setTexture(glyphname);
 	    TextureManager.getInstance().getTexture(glyphname).setMipmap(false);
-
         
         plane.setRenderHook(this);
       	plane.setShader(shader);
@@ -54,9 +60,17 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	{
 		addToWorld();
 		parent.addChild(plane);
-		plane.translate(0,10,0);
+		plane.translate(-6,10,0);
+	}
+	
+	
+	public void setAttachmentObjectCamera(Camera cam , Object3D obj)
+	{
 		
-		//plane.
+		 camera = cam;
+		//cam.g
+		camobj = Primitives.getBox(1, 1);
+		//camobj.setCenter(allGameObjects.INSTANCE.cam.getPosition());
 		
 	}
 	
@@ -68,6 +82,16 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	public void removeFromWorld()
 	{
 		world.addObject(plane);
+	}
+	
+	
+	public void update()
+	{
+		
+		
+		//camobj.setCenter(allGameObjects.INSTANCE.cam.getPosition());
+	//	camobj.setOrientation(allGameObjects.INSTANCE.cam.getDirection(), allGameObjects.INSTANCE.cam.getUpVector());
+		
 	}
 
 
