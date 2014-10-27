@@ -17,8 +17,7 @@ import com.threed.jpct.TextureManager;
 import com.threed.jpct.World;
 
 
-
-                                                   //serialization is desktop jpct only i believe
+                                        //serialization is desktop jpct only i believe
 public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	
@@ -44,7 +43,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 		tm.addTexture(glyphname, glyph);
        
 	
-		plane = Primitives.getPlane(1, 4.0F);
+		plane = Primitives.getPlane(1, 4.9F);
         plane.setTexture(glyphname);
 	    TextureManager.getInstance().getTexture(glyphname).setMipmap(false);
         
@@ -66,12 +65,13 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void setAttachmentObjectCamera(Camera cam , Object3D obj)
 	{
-		
-		 camera = cam;
-		//cam.g
-		camobj = Primitives.getBox(1, 1);
-		//camobj.setCenter(allGameObjects.INSTANCE.cam.getPosition());
-		
+	camera = cam;
+	camobj = Primitives.getBox(1, 1);
+	
+	addToWorld();
+	camobj.addChild(plane);
+	plane.translate(-6,10,0);
+	
 	}
 	
 	public void addToWorld()
@@ -88,9 +88,8 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	public void update()
 	{
 		
-		
-		//camobj.setCenter(allGameObjects.INSTANCE.cam.getPosition());
-	//	camobj.setOrientation(allGameObjects.INSTANCE.cam.getDirection(), allGameObjects.INSTANCE.cam.getUpVector());
+		camobj.setCenter(camera.getPosition());
+		camobj.setOrientation(camera.getDirection(), camera.getUpVector());
 		
 	}
 
