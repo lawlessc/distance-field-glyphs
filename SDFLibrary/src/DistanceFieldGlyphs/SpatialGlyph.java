@@ -79,19 +79,24 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 		world.addObject(plane);
 	}
 	
-	public void removeFromWorld()
-	{
-		world.addObject(plane);
-	}
 	
 	
 	public void update()
-	{
-		
+	{	
 		camobj.setCenter(camera.getPosition());
 		camobj.setOrientation(camera.getDirection(), camera.getUpVector());
+	}
+	
+	public void removeFromWorld()
+	{
+		world.removeObject(plane);
+		camera=null;
+		camobj=null;
+		
 		
 	}
+	
+
 
 
 
