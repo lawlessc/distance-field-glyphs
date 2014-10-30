@@ -55,13 +55,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	
 	
-	public void setAttachmentObject(Object3D parent)
-	{
-		addToWorld();
-		parent.addChild(plane);
-		plane.translate(-6,10,0);
-	}
-	
+
 	
 	public void setAttachmentObjectCamera(Camera cam , Object3D obj)
 	{
@@ -69,8 +63,18 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	camobj = Primitives.getBox(1, 1);
 	
 	addToWorld();
+	camobj.setOrigin(camera.getPosition());
+	//camobj.setCenter(camera.getPosition());
+	
+	
+	
+	
+	if(plane.hasParent(camobj) == false)
+	{
 	camobj.addChild(plane);
-	plane.translate(-6,10,0);
+	}
+	
+	plane.translate(-4,-4,-4);
 	
 	}
 	
@@ -83,8 +87,14 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void update()
 	{	
-		camobj.setCenter(camera.getPosition());
-		camobj.setOrientation(camera.getDirection(), camera.getUpVector());
+		
+	camobj.setCenter(camera.getPosition());
+	
+   // camobj.translate(camera.getPosition());
+    camobj.setOrientation(camera.getDirection(), camera.getUpVector());
+	//	plane.translate(camera.getPosition().x-6,camera.getPosition().y+6,camera.getPosition().z-8);
+ //	camobj.setOrientation(camera.getDirection(), camera.getUpVector());
+	//plane.translate(6,6,8);
 	}
 	
 	public void removeFromWorld()
@@ -112,6 +122,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 
 	@Override
 	public void beforeRendering(int arg0) {
+		update();
 		// TODO Auto-generated method stub
 		
 	}
