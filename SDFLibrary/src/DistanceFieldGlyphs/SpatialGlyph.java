@@ -63,19 +63,18 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	camobj = Primitives.getBox(1, 1);
 	
 	addToWorld();
-	camobj.setOrigin(camera.getPosition());
+	//camobj.setOrigin(camera.getPosition());
 	//camobj.setCenter(camera.getPosition());
 	
 	
 	
-	
+	plane.translate(0,4,20);
 	if(plane.hasParent(camobj) == false)
 	{
 	camobj.addChild(plane);
 	}
 	
-	plane.translate(-4,-4,-4);
-	
+//	plane.translate(4,4,0);
 	}
 	
 	public void addToWorld()
@@ -87,14 +86,12 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void update()
 	{	
-		
-	camobj.setCenter(camera.getPosition());
-	
-   // camobj.translate(camera.getPosition());
-    camobj.setOrientation(camera.getDirection(), camera.getUpVector());
-	//	plane.translate(camera.getPosition().x-6,camera.getPosition().y+6,camera.getPosition().z-8);
- //	camobj.setOrientation(camera.getDirection(), camera.getUpVector());
-	//plane.translate(6,6,8);
+//   
+   camobj.setCenter(camera.getPosition());
+   camobj.setOrientation(camera.getDirection(), camera.getUpVector());
+   //camobj.translate(camera.getPosition());
+  // camobj.setOrigin(camera.getPosition());
+  // camobj.setRotationPivot(pivot)
 	}
 	
 	public void removeFromWorld()
