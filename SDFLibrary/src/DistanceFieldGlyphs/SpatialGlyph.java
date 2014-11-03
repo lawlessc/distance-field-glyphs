@@ -22,6 +22,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	
 	private Object3D plane;
+	
 	private World world;
 	SimpleVector colour;
 	GLSLShader shader;
@@ -30,6 +31,8 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	//these are to keep the object attached and rotating with the camera
 	Camera    camera;// if connected to a camera
 	Object3D  camobj;
+	Object3D  subject;
+	//SimpleVector offset;
 	
 	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, World world, SimpleVector colour)
 	{
@@ -60,14 +63,18 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	public void setAttachmentObjectCamera(Camera cam , Object3D obj)
 	{
 	camera = cam;
-	camobj = Primitives.getBox(1, 1);
 	
+	camobj =// Object3D.createDummyObj();
+			 Primitives.getBox(1, 1);
+	subject= obj;
 	addToWorld();
 	//camobj.setOrigin(camera.getPosition());
 	//camobj.setCenter(camera.getPosition());
 	
 	
 	
+	//plane.translate(0,4,20);
+	//offset = new SimpleVector(0,4,20);
 	plane.translate(0,4,20);
 	if(plane.hasParent(camobj) == false)
 	{
@@ -86,19 +93,22 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void update()
 	{	
-//   
-   camobj.setCenter(camera.getPosition());
+   camobj.setOrigin(subject.getOrigin());
    camobj.setOrientation(camera.getDirection(), camera.getUpVector());
-   //camobj.translate(camera.getPosition());
-  // camobj.setOrigin(camera.getPosition());
-  // camobj.setRotationPivot(pivot)
 	}
 	
 	public void removeFromWorld()
 	{
+		
+		if(plane.hasParent(camobj) == true)
+		{
+		plane.removeParent(camobj);
+		}
 		world.removeObject(plane);
+		
 		camera=null;
 		camobj=null;
+		subject=null;
 		
 		
 	}
