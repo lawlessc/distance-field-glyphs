@@ -68,24 +68,22 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 			 Primitives.getBox(1, 1);
 	subject= obj;
 	addToWorld();
-	//camobj.setOrigin(camera.getPosition());
-	//camobj.setCenter(camera.getPosition());
+	camobj.setOrigin(new SimpleVector(0,0,0));
+	plane.translate(new SimpleVector(0,0,10));
+	//plane.translate(new SimpleVector(0,0,10));
 	
 	
+//	if(plane.hasParent(camobj) == false)
+//	{
+//	camobj.addChild(plane);
+//	}
 	
-	//plane.translate(0,4,20);
-	//offset = new SimpleVector(0,4,20);
-	plane.translate(0,4,20);
-	if(plane.hasParent(camobj) == false)
-	{
-	camobj.addChild(plane);
-	}
-	
-//	plane.translate(4,4,0);
+
 	}
 	
 	public void addToWorld()
 	{
+		world.addObject(camobj);
 		world.addObject(plane);
 	}
 	
@@ -93,9 +91,33 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void update()
 	{	
-   camobj.setOrigin(subject.getOrigin());
-   camobj.setOrientation(camera.getDirection(), camera.getUpVector());
+  // camobj.setOrigin(subject.getOrigin());
+  
+   //camobj.translate(subject.getOrigin());
+		
+   plane.setOrigin(subject.getOrigin());
+   
+ //  camobj.setCenter(subject.getOrigin());
+  
+ //  plane
+   plane.setOrientation(camera.getDirection().normalize(), camera.getUpVector());
+  
+	
+   
+  // System.out.println("Plane Origin"+ plane.getOrigin() +"translation"+ plane.getTranslation() );
+   
+   
+//	System.out.println("Camera direction  vector"+ camera.getDirection());
+//	System.out.println("Camera up  vector"+ camera.getUpVector());
+	
+ //  camobj.setr
 	}
+	
+	
+	
+	
+	
+	
 	
 	public void removeFromWorld()
 	{
@@ -112,6 +134,20 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 		
 		
 	}
+	
+//	public SimpleVector positionRotation(SimpleVector focalPoint)
+//	{
+//		
+//		SimpleVector direction = new SimpleVector(
+//				Math.cos(verticalAngle) * Math.sin(horizontalAngle),
+//				Math.sin(verticalAngle),
+//				Math.cos(verticalAngle) * Math.cos(horizontalAngle)
+//				);
+//		direction.scalarMul(400/(scaleFactor));
+//		focalPoint.sub(direction);
+//			
+//	return focalPoint;
+//	}
 	
 
 
