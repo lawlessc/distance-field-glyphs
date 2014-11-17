@@ -27,11 +27,13 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	SimpleVector colour;
 	GLSLShader shader;
 	
+	float offsetUp;
+	float offsetRight;
 	
 	//these are to keep the object attached and rotating with the camera
 	Camera    camera;// if connected to a camera
-	Object3D  camobj;
-	Object3D  subject;
+	Object3D subject;
+	
 	//SimpleVector offset;
 	
 	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, World world, SimpleVector colour)
@@ -60,30 +62,18 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 
 	
-	public void setAttachmentObjectCamera(Camera cam , Object3D obj)
+	public void setAttachmentObjectCamera(Camera cam , Object3D obj , float offsetSide, float offsetUp)
 	{
 	camera = cam;
-	
-	camobj =// Object3D.createDummyObj();
-			 Primitives.getBox(1, 1);
-	subject= obj;
+	this.subject=obj;
+	this.offsetRight=offsetSide;
+	this.offsetUp=offsetUp;
 	addToWorld();
-	camobj.setOrigin(new SimpleVector(0,0,0));
-	plane.translate(new SimpleVector(0,0,10));
-	//plane.translate(new SimpleVector(0,0,10));
-	
-	
-//	if(plane.hasParent(camobj) == false)
-//	{
-//	camobj.addChild(plane);
-//	}
-	
-
 	}
 	
 	public void addToWorld()
 	{
-		world.addObject(camobj);
+		
 		world.addObject(plane);
 	}
 	
@@ -91,26 +81,22 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void update()
 	{	
-  // camobj.setOrigin(subject.getOrigin());
   
-   //camobj.translate(subject.getOrigin());
-		
-   plane.setOrigin(subject.getOrigin());
-   
- //  camobj.setCenter(subject.getOrigin());
   
- //  plane
-   plane.setOrientation(camera.getDirection().normalize(), camera.getUpVector());
-  
-	
-   
-  // System.out.println("Plane Origin"+ plane.getOrigin() +"translation"+ plane.getTranslation() );
-   
-   
-//	System.out.println("Camera direction  vector"+ camera.getDirection());
-//	System.out.println("Camera up  vector"+ camera.getUpVector());
-	
- //  camobj.setr
+    SimpleVector neworg = subject.getOrigin();
+    
+    SimpleVector side   = new SimpleVector(camera.getSideVector());
+    side.scalarMul(offsetRight);
+    
+   SimpleVector up   = new SimpleVector(camera.getUpVector());
+    up.scalarMul(offsetUp);
+    
+    neworg.add(side);
+    neworg.add(up);
+    
+    
+	plane.setOrigin(neworg);
+
 	}
 	
 	
@@ -122,14 +108,11 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	public void removeFromWorld()
 	{
 		
-		if(plane.hasParent(camobj) == true)
-		{
-		plane.removeParent(camobj);
-		}
+		
 		world.removeObject(plane);
 		
 		camera=null;
-		camobj=null;
+		
 		subject=null;
 		
 		
