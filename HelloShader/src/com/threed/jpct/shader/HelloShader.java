@@ -191,7 +191,8 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 
 			if (master == null) {
 				world = new World();
-
+                
+				Camera cam = world.getCamera();
 				TextureManager tm = TextureManager.getInstance();
 
 				Texture face = new Texture(res.openRawResource(R.raw.face));
@@ -215,7 +216,9 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 			   
 			   
 			   SpatialGlyph testxx = latin_txt.createGlyph(R.raw.eye_of_horussdf, new SimpleVector(1f, 1f,1f), res,"testexture");
-			   testxx.setAttachmentObject(plane);
+			   //testxx.setAttachmentObject(plane);
+			   
+			   testxx.setAttachmentObjectCamera(cam, plane, 4.5f,  3.5f);
 			   ////////This is the same factories being used to generate text;
 			   
 			   rongorongo_txt.createText("Hello World ABCPp Kk", 1.0f, 1.4f, 1f)	;
@@ -269,7 +272,7 @@ public class HelloShader extends Activity implements OnScaleGestureListener {
 
 				world.setAmbientLight(10, 10, 10);
 
-				Camera cam = world.getCamera();
+				
 				cam.moveCamera(Camera.CAMERA_MOVEOUT, 70);
 				cam.lookAt(plane.getTransformedCenter());
 

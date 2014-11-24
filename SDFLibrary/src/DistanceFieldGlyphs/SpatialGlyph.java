@@ -21,7 +21,7 @@ import com.threed.jpct.World;
 public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	
-	private Object3D plane;
+	public Object3D plane;
 	
 	private World world;
 	SimpleVector colour;
@@ -68,7 +68,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	this.subject=obj;
 	this.offsetRight=offsetSide;
 	this.offsetUp=offsetUp;
-	addToWorld();
+	//addToWorld();
 	}
 	
 	public void addToWorld()
@@ -88,13 +88,12 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
     SimpleVector side   = new SimpleVector(camera.getSideVector());
     side.scalarMul(offsetRight);
     
-   SimpleVector up   = new SimpleVector(camera.getUpVector());
+    SimpleVector up   = new SimpleVector(camera.getUpVector());
     up.scalarMul(offsetUp);
     
     neworg.add(side);
     neworg.add(up);
-    
-    
+
 	plane.setOrigin(neworg);
 
 	}
@@ -148,7 +147,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 
 	@Override
 	public void beforeRendering(int arg0) {
-		update();
+		
 		// TODO Auto-generated method stub
 		
 	}
