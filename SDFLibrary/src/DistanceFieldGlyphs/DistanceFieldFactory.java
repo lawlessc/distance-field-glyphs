@@ -69,7 +69,7 @@ public class DistanceFieldFactory  {
 	
 	public SpatialGlyph createGlyph(int textureref, SimpleVector colour , Resources res ,String texturename )
 	{
-		SpatialGlyph newGlyph = new SpatialGlyph(textureref, res, texturename, glyphShader,worldReference,colour);
+		SpatialGlyph newGlyph = new SpatialGlyph(textureref, res, texturename, glyphShader,colour);
 		return newGlyph;
 	}
 	

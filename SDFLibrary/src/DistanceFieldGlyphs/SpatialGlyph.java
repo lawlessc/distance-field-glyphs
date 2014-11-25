@@ -23,7 +23,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public Object3D plane;
 	
-	private World world;
+	//private World world;
 	SimpleVector colour;
 	GLSLShader shader;
 	
@@ -36,10 +36,10 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	//SimpleVector offset;
 	
-	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, World world, SimpleVector colour)
+	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, SimpleVector colour)
 	{
 		
-		this.world=world;
+		//this.world=world;
 		this.colour= colour;
 		this.shader=shader;
 		TextureManager tm = TextureManager.getInstance();
@@ -74,7 +74,7 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	public void addToWorld()
 	{
 		
-		world.addObject(plane);
+	//	world.addObject(plane);
 	}
 	
 	
@@ -106,34 +106,11 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public void removeFromWorld()
 	{
-		
-		
-		world.removeObject(plane);
-		
+	//	world.removeObject(plane);
 		camera=null;
-		
 		subject=null;
-		
-		
 	}
 	
-//	public SimpleVector positionRotation(SimpleVector focalPoint)
-//	{
-//		
-//		SimpleVector direction = new SimpleVector(
-//				Math.cos(verticalAngle) * Math.sin(horizontalAngle),
-//				Math.sin(verticalAngle),
-//				Math.cos(verticalAngle) * Math.cos(horizontalAngle)
-//				);
-//		direction.scalarMul(400/(scaleFactor));
-//		focalPoint.sub(direction);
-//			
-//	return focalPoint;
-//	}
-	
-
-
-
 
 
 	@Override
