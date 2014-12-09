@@ -23,7 +23,6 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	
 	public Object3D plane;
 	
-	//private World world;
 	SimpleVector colour;
 	GLSLShader shader;
 	
@@ -68,21 +67,13 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	this.subject=obj;
 	this.offsetRight=offsetSide;
 	this.offsetUp=offsetUp;
-	//addToWorld();
 	}
 	
-	public void addToWorld()
-	{
-		
-	//	world.addObject(plane);
-	}
-	
+
 	
 	
 	public void update()
 	{	
-  
-  
     SimpleVector neworg = subject.getOrigin();
     
     SimpleVector side   = new SimpleVector(camera.getSideVector());
@@ -95,21 +86,8 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
     neworg.add(up);
 
 	plane.setOrigin(neworg);
-
 	}
 	
-	
-	
-	
-	
-	
-	
-	public void removeFromWorld()
-	{
-	//	world.removeObject(plane);
-		camera=null;
-		subject=null;
-	}
 	
 
 

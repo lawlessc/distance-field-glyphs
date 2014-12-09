@@ -21,6 +21,7 @@ import android.graphics.RectF;
 import com.example.sdflibrary.R;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.GLSLShader;
+import com.threed.jpct.Object3D;
 
 import com.threed.jpct.Loader;
 
@@ -172,6 +173,9 @@ public class DistanceFieldFactory  {
 	
 		
 	}
+	
+	
+
 	
 	public static Bitmap printCharacterToBitmap(Rect origin ,RectF position) {
 	    Bitmap bmOverlay  = Bitmap.createBitmap(textureSize, textureSize, Bitmap.Config.ARGB_4444);
