@@ -32,8 +32,9 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
 	//these are to keep the object attached and rotating with the camera
 	Camera    camera;// if connected to a camera
 	Object3D subject;
-	
+	float distOut;
 	//SimpleVector offset;
+	
 	
 	SpatialGlyph(int texture ,Resources res ,String glyphname ,GLSLShader shader, SimpleVector colour)
 	{
@@ -57,23 +58,41 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
       	plane.setBillboarding(true);   
 	}
 	
-	
-	
 
+	
+	
+	//set a spatial glyph to be attached to a camera, and a distance in front of it.
+	public void setAttachmentCamera(Camera cam , float dist , float offsetSide, float offsetUp)
+	{
+	camera = cam;
+    this.distOut = dist;
+	this.offsetRight=offsetSide;
+	this.offsetUp=offsetUp;
+	this.subject=null;
+	}
+	
+	
+	
+	
+	
 	
 	public void setAttachmentObjectCamera(Camera cam , Object3D obj , float offsetSide, float offsetUp)
 	{
 	camera = cam;
 	this.subject=obj;
+	
 	this.offsetRight=offsetSide;
 	this.offsetUp=offsetUp;
+	this.distOut = 0;
 	}
 	
 
 	
-	
 	public void update()
-	{	
+	{
+		
+	if(this.subject != null)
+	{
     SimpleVector neworg = subject.getOrigin();
     
     SimpleVector side   = new SimpleVector(camera.getSideVector());
@@ -86,6 +105,27 @@ public class SpatialGlyph implements IRenderHook /*, Serializable*/  {
     neworg.add(up);
 
 	plane.setOrigin(neworg);
+	}
+	else
+	{	
+	    SimpleVector neworg = camera.getDirection();
+	    neworg.scalarMul(distOut);
+	    
+	    SimpleVector side   = new SimpleVector(camera.getSideVector());
+	    side.scalarMul(offsetRight);
+	    
+	    SimpleVector up   = new SimpleVector(camera.getUpVector());
+	    up.scalarMul(offsetUp);
+	    
+	    neworg.add(side);
+	    neworg.add(up);
+
+		plane.setOrigin(neworg);
+	}
+	
+	
+	
+	
 	}
 	
 	

@@ -48,9 +48,7 @@ public class DistanceFieldFactory  {
 	
 	FrameBuffer framebufferReference;
     World worldReference;
-    
-    
-    
+     
     Map<String,DistanceFieldCharacter> characterData;
     
     
